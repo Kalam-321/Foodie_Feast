@@ -1,0 +1,32 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is Igniting our App",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalam-321/React_repo.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Abdul Kalam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kalam-321/React_repo/issues"
+  },
+  "homepage": "https://github.com/Kalam-321/React_repo#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":[
+    "last 2 versions"
+  ]
+}
