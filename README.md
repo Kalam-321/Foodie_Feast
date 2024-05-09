@@ -18,3 +18,18 @@
   --> HTTPss
   --> Tree Shaking - Removes unused code
   --> Different dev and production bundles
+
+  # Food Ordering app
+  /**
+ * Header
+    - logo
+    - nav items
+ * Body
+    - Search box
+    - RestaurantContainer
+      - RestaurantCards
+ * Footer
+    - Links
+    - Contact
+    - Copyright  
+ */
