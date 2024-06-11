@@ -24,7 +24,7 @@
 .res-card
 {
     width: 200px;
-    height: 350px;
+    height: auto;
     padding: 5px;
     margin: 18px;
 }
@@ -97,4 +97,10 @@
 .search > button
 {
     cursor: pointer;
+}
+
+.resLink
+{
+    text-decoration: none;
+    color: black;
 }

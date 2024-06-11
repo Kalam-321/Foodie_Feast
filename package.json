@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "This is Igniting our App",
   "scripts": {
-    "start" : "parcel index.html --open",
-    "build" : "parcel build index.html",
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -26,9 +26,11 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.10.3",
+    "react-router-dom": "^6.23.1"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }

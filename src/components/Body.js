@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = ()=>{  
     // let listOfRestaurants = resList;
@@ -15,7 +16,7 @@ const Body = ()=>{
     },[]);
 
     const fetchData = async ()=>{
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=15.793212&lng=78.0441517&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=15.793212&lng=78.0441517&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
         console.log(json);
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -23,9 +24,8 @@ const Body = ()=>{
     }
     console.log("Body rendered");
     // Conditional Rendering
-    if(listOfRestaurants.length===0)
-    {
-        return <Shimmer/>;
+    if (listOfRestaurants.length === 0) {
+        return <Shimmer />;
     }
     return (
         <div className="body">
@@ -52,7 +52,7 @@ const Body = ()=>{
             <div className="res-container">
                 {
                     filterdRestaurants.map(restaurant=>(
-                        <RestaurantCard key = {restaurant.info.id} resData={restaurant}/>
+                        <Link to={"/restaurants/" + restaurant.info.id} key = {restaurant.info.id} className="resLink"><RestaurantCard  resData={restaurant}/></Link>
                     ))
                 }             
             </div>
