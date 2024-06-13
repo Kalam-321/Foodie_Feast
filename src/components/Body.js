@@ -39,9 +39,9 @@ const Body = ()=>{
     }
     return (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="search-box" value={searchText}
+            <div className="filter flex">
+                <div className="p-4 m-4">
+                    <input type="text" className="border border-solid border-black h-9" value={searchText}
                     onChange={(e)=>{
                         setSearchText(e.target.value);
                     }}/> 
@@ -49,17 +49,19 @@ const Body = ()=>{
                         console.log(searchText);
                         const filteredRestaurant = listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurants(filteredRestaurant);
-                    }}>Search</button>
+                    }} className="m-4 px-4 py-2 bg-green-100 rounded-lg">Search</button>
                 </div>
-                <button className="filter-btn" onClick={()=>{
-                    const filteredList = listOfRestaurants.filter((res)=>res.info.avgRating>4);
-                    setFilteredRestaurants(filteredList);
-                    console.log(listOfRestaurants);
-                }}>
-                    Top rated Restaurants
-                </button>
+                <div className="p-4 m-4 flex items-center">
+                    <button className="m-4 px-4 py-2 bg-green-100 rounded-lg" onClick={()=>{
+                        const filteredList = listOfRestaurants.filter((res)=>res.info.avgRating>4);
+                        setFilteredRestaurants(filteredList);
+                        console.log(listOfRestaurants);
+                    }}>
+                        Top rated Restaurants
+                    </button>
+                </div>
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap">
                 {
                     filterdRestaurants.map(restaurant=>(
                         <Link to={"/restaurants/" + restaurant.info.id} key = {restaurant.info.id} className="resLink"><RestaurantCard  resData={restaurant}/></Link>
