@@ -1,8 +1,11 @@
-import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import RestaurantCard,{withLabel} from "./RestaurantCard";
+import { useEffect, useState,useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
+
 
 const Body = ()=>{  
     // let listOfRestaurants = resList;
@@ -12,6 +15,9 @@ const Body = ()=>{
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
     const [filterdRestaurants,setFilteredRestaurants] = useState([]);
     const [searchText,setSearchText] = useState("");
+    const RestaurantCardPromoted = withLabel(RestaurantCard);
+    const {setUserName,loggedInUser} = useContext(UserContext);
+    
     useEffect(()=>{
         fetchData();
     },[]);
@@ -24,6 +30,7 @@ const Body = ()=>{
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
+
     const onlineStatus = useOnlineStatus();
     if(!onlineStatus)
     {
@@ -33,6 +40,7 @@ const Body = ()=>{
     }
 
     console.log("Body rendered");
+    console.log(listOfRestaurants);
     // Conditional Rendering
     if (listOfRestaurants.length === 0) {
         return <Shimmer />;
@@ -59,12 +67,23 @@ const Body = ()=>{
                     }}>
                         Top rated Restaurants
                     </button>
+                    <div>
+                        <label>Username : </label>
+                        <input
+                            className="border border-black px-2"
+                            value={loggedInUser}
+                            onChange={(e)=>setUserName(e.target.value)}
+                        />
+                    </div>
                 </div>
+                
             </div>
             <div className="flex flex-wrap">
                 {
                     filterdRestaurants.map(restaurant=>(
-                        <Link to={"/restaurants/" + restaurant.info.id} key = {restaurant.info.id} className="resLink"><RestaurantCard  resData={restaurant}/></Link>
+                        <Link to={"/restaurants/" + restaurant.info.id} key = {restaurant.info.id} className="resLink">
+                            {restaurant.info.avgRating>=4.2 ? (<RestaurantCardPromoted resData={restaurant}/>) : (<RestaurantCard  resData={restaurant}/>)}
+                        </Link>
                     ))
                 }             
             </div>
