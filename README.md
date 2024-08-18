@@ -33,3 +33,11 @@
     - Contact
     - Copyright  
  */
+
+ # Redux toolkit
+ - Install @reduxjs/toolkit react-redux
+ - Build our store
+ - Connect our store to our app
+ - Slice (cartSlice)
+ - dispatch(action)
+ - Selector
